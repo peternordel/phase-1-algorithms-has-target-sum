@@ -1,13 +1,13 @@
+//writing out solution from the video using an object and complement
+
 function hasTargetSum(array, target) {
-  //iterate over array
-  for (let i = 0; i < array.length; i++) {
-    //iterate over array starting with one greater than the previous element (we do not need to check sums that have already been checked in previous iterations)
-    for (let j = i + 1; j < array.length; j++) {
-      //return true if we find a pair that adds to target
-      if (array[i] + array[j] === target) {
-        return true;
-      }
-    }
+  const seenNumbers = {};
+  
+  for (const number of array) {
+    const complement = target - number;
+
+    if(complement in seenNumbers) return true;
+    seenNumbers[number] = true;
   }
   //return false if none of the above loops returned true
   return false;
