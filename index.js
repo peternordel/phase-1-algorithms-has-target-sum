@@ -1,17 +1,35 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  //iterate over array
+  for (let i = 0; i < array.length; i++) {
+    //iterate over array starting with one greater than the previous element (we do not need to check sums that have already been checked in previous iterations)
+    for (let j = i + 1; j < array.length; j++) {
+      //return true if we find a pair that adds to target
+      if (array[i] + array[j] === target) {
+        return true;
+      }
+    }
+  }
+  //return false if none of the above loops returned true
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
+  O(n^2)
 */
 
 /* 
   Add your pseudocode here
+  1. starting with first number, iterate over array (for loop w/ i)
+  2. inside each iteration, iterate over the array starting with next index (for loop w/ j)
+  3. return true if we find a match, return false if we do not find a match
 */
 
 /*
   Add written explanation of your solution here
+  I feel like this is answered above in the pseudo code/comments
+
+  It's worth mentioning that I tried optimizing my solution by sorting the array, then finding the index where it is greater than the target (so we can ignore anything after that index, since we are looking for pairs), then starting the first number at the beginning and the second number at the end, then breaking the loop if our sum is less than the target. I feel like this would have been optimized, but I could not get the code to work.
 */
 
 // You can run `node index.js` to view these console logs
